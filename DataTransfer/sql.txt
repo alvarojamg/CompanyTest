@@ -1,0 +1,44 @@
+
+
+
+CREATE table charges (
+     charges_id TEXT PRIMARY KEY NOT NULL,
+     amount NUMERIC NOT NULL,
+     status TEXT NOT NULL,
+     created_at DATE NOT NULL,
+     paid_at DATE,
+     cdate TEXT,
+     udate TEXT
+);
+
+CREATE table companies (
+     id SERIAL PRIMARY KEY,
+     company_id TEXT NOT NULL,
+     company_name TEXT,
+     cdate TEXT,
+     udate TEXT,
+     charges_id TEXT,
+     CONSTRAINT fk_charges_company
+        FOREIGN KEY (charges_id) 
+        REFERENCES charges(charges_id)
+);
+
+
+CREATE VIEW daily_company_transactions AS
+SELECT 
+    c.company_id,
+    c.company_name,
+    ch.created_at AS transaction_date,
+    SUM(ch.amount) AS total_amount
+FROM 
+    companies c
+JOIN 
+    charges ch ON c.charges_id = ch.charges_id
+    
+GROUP BY 
+    c.company_id, 
+    c.company_name, 
+    ch.created_at
+ORDER BY 
+    ch.created_at DESC, 
+    total_amount DESC;

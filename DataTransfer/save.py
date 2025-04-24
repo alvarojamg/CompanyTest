@@ -1,7 +1,5 @@
 import pandas as pd
 from repository.company_repository import Repository
-from dotenv import load_dotenv
-import os
 import numpy as np
 from datetime import datetime
 import asyncio
