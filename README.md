@@ -12,7 +12,3 @@ Sigue estos pasos para clonar y usar el proyecto:
 - git clone https://github.com/alvarojamg/CompanyTest.git
 - cd CompanyTest
 - pip install -r requirements.txt
-
-
-## 📄 Requisitos
-- 🖥️ Windows 10/11
