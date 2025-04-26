@@ -5,7 +5,7 @@ from datetime import datetime
 import asyncio
 
 try:
-   
+   #En este scrip se carga el scv a la base de datos, se ejecuta con el comando python save.py
     df = pd.read_csv("data/clean_data.csv")
     df.info()
     
